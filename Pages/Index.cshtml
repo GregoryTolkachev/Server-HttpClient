@@ -1,4 +1,6 @@
 ﻿@page
+@using Models.Cards
+@using Models.RandomUsers
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -6,5 +8,32 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
+
+                @foreach(User u in Model.users.Results){
+
+                    <div>
+                        <div>
+                            <span>First Name:</span><span>@u.Name.First</span>
+                        </div>
+                        <div>
+                            <span>First Name:</span><span>@u.Name.Last</span>
+                        </div>
+                                                <div>
+                            <span>First Name:</span><span>@u.Email</span>
+                        </div>
+
+                    </div>
+                }
+        
+                <div style="display:inline-grid; grid-template-columns: 25% 25% 25%">
+                    @foreach (Card c in Model.cards.Data)
+                    {
+
+                        <div><img style="width:30%" src="@c.ImageUris.Large" /></div>
+                    }
+                </div>
+
+
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
